@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_sale_order_form_inherit" model="ir.ui.view">
+            <field name="name">sale.order.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="partner_discount_code"></field>
+                    <field name = "discount_vip"/>
+                </xpath>
+
+                <xpath expr="//field[@name='order_line']/tree//field[@name='tax_id']" position="after">
+                    <field name="discount_code_vip"/>
+                </xpath>
+
+                <xpath expr="//group[@name='note_group']//field[@name='tax_totals_json']" position="replace">
+                    <field class="oe_right" name="amount_untaxed"/>
+                    <field class="oe_right" name="amount_tax"/>
+                    <field class="oe_right" name="discount_price"/>
+                    <field class="oe_right" name="amount_total"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="new_sale_order_view_search_inherit_quotation" model="ir.ui.view">
+            <field name="name">new.sale.order.search.inherit.quotation</field>
+            <field name="model">sale.order</field>
+            <field name="mode">primary</field>
+            <field name="inherit_id" ref="sale.sale_order_view_search_inherit_quotation"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='sales']" position="after">
+                    <filter string="Special Customer" name="special_customer"
+                            domain="[('partner_id.customer_discount_code','!=',False)]"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
+

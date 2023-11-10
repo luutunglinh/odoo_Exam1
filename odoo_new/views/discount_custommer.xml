@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_res_partner_form" model="ir.ui.view">
+        <field name="name">res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vat']" position="before">
+                <field name="customer_discount_code" />
+                <field name="discount"/>
+            </xpath>
+        </field>
+    </record>
+
+   <record id="view_res_partner_inherited_tree" model="ir.ui.view">
+        <field name="name">res.partner.inherited.tree</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+             <xpath expr="//field[@name='email']" position="after">
+                <field name="customer_discount_code" optional="hide"/>
+                 <field name="discount" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="filter_customer_discount" model="ir.ui.view">
+        <field name="name">customer.discount.valid</field>
+        <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='inactive']" position="before">
+                    <filter string="Customer Valid" name="customer_check" domain="[('customer_check','=','True')]"/>
+                </xpath>
+            </field>
+    </record>
+
+</odoo>
