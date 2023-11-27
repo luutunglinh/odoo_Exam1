@@ -1,0 +1,30 @@
+.right__top {
+  display: flex;
+  justify-content: space-between;
+  height: 56px;
+  align-items: center;
+  padding: 0px 20px;
+}
+
+.right__top-right {
+  display: flex;
+  align-items: center;
+  
+}
+
+.right__top-right .icon__notification {
+    margin-left: 24px;
+}
+
+.right__top-right__user {
+  display: flex;
+  align-items: center;
+  margin-left: 24px;
+}
+
+
+
+.right__top-right__user > span {
+  margin: 0 12px;
+}
+

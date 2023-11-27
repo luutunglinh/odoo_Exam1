@@ -1,0 +1,92 @@
+
+      <div class="choose-recommendation-product" style="height: 336px;" >
+        <div class="choose-recomendation">
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <g clip-path="url(#clip0_3_7052)">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M0 6C0 2.6865 2.6865 0 6 0C9.3135 0 12 2.6865 12 6C12 9.3135 9.3135 12 6 12C2.6865 12 0 9.3135 0 6ZM6.67501 7.20115H5.39337V7.11654C5.39992 5.93719 5.68836 5.76447 6.21774 5.44746C6.27369 5.41396 6.33232 5.37885 6.3936 5.34077C6.83188 5.06548 7.16874 4.71775 7.16874 4.21065C7.16874 3.64197 6.72322 3.27251 6.16903 3.27251C5.6583 3.27251 5.1748 3.51123 5.1422 4.1922H3.78223C3.81845 2.81578 4.90852 2.1 6.17627 2.1C7.55994 2.1 8.51256 2.96825 8.51256 4.19254C8.51256 5.02202 8.09601 5.56534 7.42954 5.96378C7.37879 5.99491 7.33125 6.02353 7.28673 6.05034C6.81326 6.33539 6.68163 6.41464 6.67501 7.11654V7.20115ZM6.77747 9.00841C6.77384 9.45031 6.40801 9.80528 5.98059 9.80528C5.53869 9.80528 5.18009 9.45031 5.18372 9.00841C5.18009 8.57375 5.53869 8.21877 5.98059 8.21877C6.40801 8.21877 6.77384 8.57375 6.77747 9.00841Z" fill="#5C5F62"/>
+            </g>
+            <defs>
+            <clipPath id="clip0_3_7052">
+            <rect width="12" height="12" fill="white"/>
+            </clipPath>
+            </defs>
+            </svg>
+            <span>Choose excluded product(s)</span>
+        </div>
+        <div class="search">
+          <!-- <Input size="large" @search="onSearch" v-model="search_recommendation" placeholder="Search product by name"
+            :addon-after="this.list_recommendation.length + ' selected' "/> -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M11.25 11.25L14.25 14.25" stroke="#868B90" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M7.5 12.25C10.1234 12.25 12.25 10.1234 12.25 7.5C12.25 4.87665 10.1234 2.75 7.5 2.75C4.87665 2.75 2.75 4.87665 2.75 7.5C2.75 10.1234 4.87665 12.25 7.5 12.25Z" stroke="#868B90" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            <AutoComplete
+                    v-model:value="searchValue"
+                    :bordered="false"
+                    placeholder="Search product by name"
+                    @search="onSearch"
+                    @focus="onFocus"
+                    @blur="onBlur"
+                    size="large"
+                    class="input"
+                />
+                <div class="search-box" v-if="isSearch">
+                    <div class="search-box-item" v-for="product in filteredRecommendation" :key="product.id" @click="addProduct(product.id)">
+                        <div>
+                            <img :src="product.url_img"/>
+                            <div>
+                                <span class="title"> {{ product.name }} </span>
+                                <span class="des">$ {{product.price}}</span>
+                            </div>
+                        </div>
+                  </div>
+                </div>
+                <div class="selected">
+                  <div style="padding-bottom: 3px">{{ list_recommendation.length }} selected</div>
+                </div>
+        </div>
+        <div @click="deleteProducts" v-if="isDeleteShow"  class="remove-btn">Remove selected product(s)</div>
+        <div class="table-product">
+          <table>
+            <thead>
+              <tr class="table-col-name">
+                <td>
+                    <input type="checkbox"
+                      v-model="tickAllRecommendation"
+                      @change="selectAllRecommendation"
+                    />
+                </td>
+                <td class="text col_image">Image</td>
+                <td class="text">Product name</td>
+                <td class="text">Price</td>
+                <td class="text">Compare at price</td>
+                <td class="text">In Stock</td>
+            </tr>
+            </thead>
+            <tbody>
+              <tr class="table-row"  v-for="product in filteredRecommendation"
+              :key="product.id">
+            <td class="col_check">
+              <input :checked="list_recommendation.some(e => e.id == product.id)"
+              :value="{
+                id: product.id,
+                name: product.name,
+                price: product.price,
+                img: product.url_img,
+                compare_at_price: product.compare_at_price,
+                quantity: product.qty}"
+              :id="product.id"
+              @input="select_recommedation(product)"
+              type="checkbox"/>
+              {{ list_recommendation }}
+            </td>
+            <td class="col_image"><img :alt="product.name" :src="product.url_img" style="width: 30px; height: 30px"></td>
+            <td class="col_name">{{ product.name }}</td>
+            <td class="col_price">{{ parseFloat(product.price).toFixed(2) }}</td>
+            <td class="col_compare_price">{{ parseFloat(product.compare_at_price).toFixed(2) }}</td>
+            <td class="col_qty">{{ product.qty }}</td>
+               </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>

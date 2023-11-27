@@ -1,0 +1,75 @@
+.right__main {
+  background-color: #eeeff1;
+  height: calc(100% - 56px);
+  padding: 0px;
+  overflow: auto;
+  width: 100%
+}
+
+.table_content {
+
+}
+
+.table__header {
+  height: 69px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
+.table__header__btn {
+  padding-right: 24px;
+}
+
+.table__header__name {
+  padding-left: 24px;
+}
+
+.table__header__name > span {
+  color: #000;
+  font-size: 27px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.table__container {
+}
+
+.table__container__wapper {
+  margin: 30px 20px;
+}
+
+.table__container_data__table {
+  padding: 16px 20px;
+  border: 1px solid #e2e2e2;
+  background: #fff;
+  margin-bottom: 30px;
+}
+
+.table__container .table__container_data__table .ant-table-thead > tr > td {
+  background-color: #fff;
+}
+
+
+.table__operations {
+  padding-bottom: 16px;
+}
+
+.table__operations > button {
+  margin-right: 30px;
+}
+
+.table__operations > button > span {
+  color: #1890ff;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.table__container_data__table .ant-pagination {
+  display: none;
+}

@@ -1,0 +1,35 @@
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  src: url("https://apps.nestscale.com/nestads/static/font/BeVietnam-Regular.ttf") format("truetype");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Be Vietnam Pro" !important; ;
+  font-size: 14px;
+  margin: 0;
+}
+
+.content {
+  display: flex;
+  height: 100vh;
+}
+
+.content__right {
+  width: calc(100% - 200px);
+  height: 100vh;
+}
+
+.container {
+  position: relative;
+}
+
+
+input[type=checkbox]
+{
+accent-color: #0958d9;
+mix-blend-mode: multiply;
+}

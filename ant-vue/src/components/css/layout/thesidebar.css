@@ -1,0 +1,102 @@
+.sider-bar {
+  box-sizing: border-box;
+  width: 250px;
+  color: red;
+  flex-shrink: 0;
+  padding: 24px 20px 0px 20px;
+}
+
+.sider-bar__top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(250px - 50px);
+  height: 56px;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.sider-bar__top .image {
+  height: 46px;
+  width: 46px;
+  border-radius: 50%;
+  background: black;
+  margin-right: 12px;
+}
+
+.sider-bar__top .text {
+  color: #17181a;
+  font-family: Kanit;
+  font-size: 27px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.side-bar__main {
+  margin-top: 12px;
+  height: calc(100vh - 58px);
+  overflow-y: auto;
+}
+
+.sider-bar__main > ul {
+  margin: 0px;
+  padding: 0px;
+  padding-bottom: 20px;
+}
+
+.sider-bar__main > ul > li {
+  list-style: none;
+  display: flex;
+  height: 44px;
+  margin-bottom: 4px;
+}
+
+.sider-bar__main .icon {
+  margin-right: 12px;
+  margin-left: 12px
+}
+
+.sider-bar__main span {
+  color: #939393;
+  font-family: Be Vietnam Pro;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.sidebar__router {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.sider-bar__main > ul > li:hover {
+  background-color: #ECECEC;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.sider-bar__main--action {
+  background-color: #ECECEC;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 12px;
+}
+
+.sider-bar__main > ul > li  div.icon {
+  margin-right: 12px;
+  width: 24px;
+  height: 24px;
+}
+
+a.active {
+  background-color: #ECECEC;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 12px;
+}
